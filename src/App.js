@@ -72,7 +72,7 @@ class SlackMessage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ loading: true });
-    fetch("/.netlify/functions/slack", {
+    fetch("/.netlify/components/slack", {
       method: "POST",
       body: JSON.stringify({
         text: this.state.text
@@ -127,14 +127,27 @@ class SlackMessage extends Component {
   }
 }
 
-function App() {
-  return (
-    <div className="App">
-      <NavigationBar />
-      <SlackMessage />
-      <Footer />
-    </div>
-  );
+// function App() {
+//   return (
+//     <div className="App">
+//       <NavigationBar />
+//       <SlackMessage />
+//       <Footer />
+//     </div>
+//   );
+// }
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Slack Messenger</h1>
+        </header>
+        <SlackMessage />
+      </div>
+    );
+  }
 }
 
 export default App;

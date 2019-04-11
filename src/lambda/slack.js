@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const slackURL = process.env.SLACK_WEBHOOK_URL;
+
 export function handler(event, context, callback) {
   if (event.httpMethod !== "POST") {
     return callback(null, {
@@ -7,8 +8,10 @@ export function handler(event, context, callback) {
       body: "Unsupported Request Method"
     });
   }
+
   try {
     const payload = JSON.parse(event.body);
+
     fetch(slackURL, {
       method: "POST",
       body: JSON.stringify({ text: payload.text })
