@@ -72,7 +72,7 @@ class SlackMessage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ loading: true });
-    fetch("/.netlify/components/slack", {
+    fetch("/.netlify/functions/slack", {
       method: "POST",
       body: JSON.stringify({
         text: this.state.text
