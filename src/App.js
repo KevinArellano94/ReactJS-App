@@ -22,7 +22,7 @@ import NetlifyAuth from "./components/NetlifyAuth.js";
 import "./App.css";
 
 // Global Variables
-const netlifyIdentity = require("netlify-identity-widget");
+//const netlifyIdentity = require("netlify-identity-widget");
 
 function NavigationBar() {
   return (
@@ -50,6 +50,18 @@ function NavigationBar() {
         <Route path="/about" render={props => <AboutPage {...props} />} />
         <Route render={NoMatchPage} />
       </Switch>
+
+      <ul className="nav navbar-nav">
+        <li>
+          <NetlifyAuth />
+        </li>
+      </ul>
+      <searchIcon toggleSearch={"toggleSearch"} />
+      <ul className="nav navbar-nav">
+        <li>
+          <div data-netlify-identity-menu />
+        </li>
+      </ul>
     </BrowserRouter>
   );
 }
@@ -58,11 +70,6 @@ function App() {
   return (
     <div className="App">
       <NavigationBar />
-      <ul className="nav navbar-nav">
-        <li>
-          <NetlifyAuth />
-        </li>
-      </ul>
       <Footer />
     </div>
   );
